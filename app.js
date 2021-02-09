@@ -8,7 +8,19 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');
 
+const dotenv = require('dotenv');
+var compression = require('compression');
+var helmet = require('helmet');
+
+const debug = require('debug');
+
 var app = express();
+
+// add compression to routes
+app.use(compression()); //Compress all routes
+app.use(helmet());
+dotenv.config();
+
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
